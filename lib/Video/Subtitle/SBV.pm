@@ -17,8 +17,8 @@ Video::Subtitle::SBV - read and write SBV format (YouTube) subtitle files
 
 =item UTF-8
 
-Input subtitle text files must be either ASCII or encoded UTF-8
-text. Output is in UTF-8.
+Input subtitle text files must be either ASCII or text encoded using
+UTF-8. Output is in UTF-8.
 
 =back
 
@@ -32,7 +32,7 @@ use warnings;
 use strict;
 use Carp;
 use autodie;
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 =head1 FUNCTIONS
 
@@ -56,7 +56,10 @@ sub validate_time
     my ($time) = @_;
     my $status;
     if ($time =~ $time_re) {
-        $status = 1;
+        my ($minutes, $seconds) = ($2, $3);
+        if ($minutes < 60 && $seconds < 60) {
+            $status = 1;
+        }
     }
     return $status;
 }
@@ -95,10 +98,17 @@ sub time_to_milliseconds
         print "Subtitle is valid.\n";
     }
 
+This routine checks whether the hash reference stored in C<$my_title>
+is a valid entry which can be given to the L<add> method. The L<add>
+method uses this to validate its input, and it is also available as a
+standalone routine exported on request.
+
 You can also use a second argument to make it print out the reason why
 the subtitle is invalid:
 
     validate_subtitle ($my_title, 1);
+
+Any "true" value will make it print out the reason.
 
 =cut
 
@@ -175,7 +185,11 @@ sub new
 
     $subtitles->set_verbosity ('yes');
 
-Set to a true value to print error messages.
+Give this function any true value to make it print error messages. Set
+to any false value to stop printing the error messages.
+
+If this is not switched on, the routine will silently ignore
+ill-formated inputs.
 
 =cut
 
@@ -200,6 +214,8 @@ sub add_subtitle
 
     $subtitles->parse_file ('subtitles.txt');
 
+Read in a file of subtitles in the SBV format.
+
 =cut
 
 sub parse_file
@@ -218,7 +234,9 @@ sub parse_file
         }
         elsif (/\S/) {
             if ($subtitle->{finished}) {
-                carp "$file_name:$.: subtitle text without a valid start/end time\n";
+                if ($subtitles->{verbosity}) {
+                    carp "$file_name:$.: subtitle text without a valid start/end time\n";
+                }
             }
             else {
                 $subtitle->{text} .= $_;
@@ -257,7 +275,7 @@ sub add
 
     $subtitles->write_file ('subtitles.sbv');
 
-Write the stored subtitles in $subtitles to the specified file.
+Write the stored subtitles in C<$subtitles> to the specified file.
 
 If this method is called without an argument, it prints the subtitles
 to standard output:

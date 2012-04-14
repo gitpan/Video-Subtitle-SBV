@@ -1,22 +1,26 @@
---- #YAML:1.0
-name:               Video-Subtitle-SBV
-version:            0.01
-abstract:           ~
-author:  []
-license:            unknown
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+---
+abstract: 'read and write SBV format (YouTube) subtitle files'
+author:
+  - unknown
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    autodie:     0
-    Test::More:  0
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120630'
+license: unknown
 meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Video-Subtitle-SBV
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Test::More: 0
+  autodie: 0
+resources:
+  bugtracker: https://github.com/benkasminbullock/Video-Subtitle-SBV/issues
+  repository: https://github.com/benkasminbullock/Video-Subtitle-SBV
+version: 0.02
