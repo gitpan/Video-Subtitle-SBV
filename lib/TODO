@@ -1,0 +1,12 @@
+* Order subtitles by their time
+
+* Get valid subtitles for a particular time
+
+* Convert time strings to millisecond strings
+
+* Splice subtitles together
+
+* Split subtitles
+
+* Offset all subtitles by a certain amount of time.
+
