@@ -12,7 +12,7 @@
                             
 
 
-This is the README for Video::Subtitle::SBV version 0.03.
+This is the README for Video::Subtitle::SBV version 0.04.
 
 Video::Subtitle::SBV is a "module" for the Perl computer programming language,
 a library of computer code to install on a computer.  This document contains
@@ -64,11 +64,11 @@ If you have the App::cpanminus installer, you may prefer
 
     cpanm Video::Subtitle::SBV
 
-To install the module from the source file, Video-Subtitle-SBV-0.03.tar.gz,
+To install the module from the source file, Video-Subtitle-SBV-0.04.tar.gz,
 follow this sequence of commands:
 
-    tar xfz Video-Subtitle-SBV-0.03.tar.gz
-    cd Video-Subtitle-SBV-0.03
+    tar xfz Video-Subtitle-SBV-0.04.tar.gz
+    cd Video-Subtitle-SBV-0.04
     perl Makefile.PL
     make
     make install
@@ -93,6 +93,6 @@ repository on github at
 
 -----------------------------------------------------------------------------
 
-This README was written on Fri Feb  7 14:48:48 2014.
+This README was written on Sat Feb  8 09:58:47 2014.
 
 -----------------------------------------------------------------------------

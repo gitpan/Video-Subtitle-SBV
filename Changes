@@ -1,8 +1,12 @@
 Revision history for perl module Video::Subtitle::SBV
 
+0.04 2014-02-08
+
+* Remove "Makefile" from distribution, add licence to "Makefile.PL".
+
 0.03 2014-02-07
 
-Add "Changes", "README", necessary fields to "Makefile.PL".
+* Add "Changes", "README", necessary fields to "Makefile.PL".
 
 0.02 2012-04-13
 
